@@ -7,24 +7,13 @@ namespace A10w.DocumentGeneration.Handlebars;
 /// </summary>
 public class HandlebarsDocumentGenerator : IDocumentGenerator
 {
-    /// <summary>
-    /// Generate Document based on Data using Handlebars engine
-    /// </summary>
-    /// <typeparam name="T"><see cref="IDocumentData"/></typeparam>
-    /// <param name="documentData">Data object associated with document</param>
-    /// <returns>Full interpolated string representation of the document</returns>
+    /// <inheritdoc />
     public Task<string> GenerateDocument<T>(T documentData) where T : IDocumentData
     {
         return GenerateDocument(typeof(T), documentData);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="dataType">Type of <see cref="IDocumentData"/>registered against the View</param>
-    /// <param name="documentData">Instance of <see cref="IDocumentData"/></param>
-    /// <returns>Full interpolated string representation of the document</returns>
-    /// <exception cref="DocumentGenerationException"></exception>
+    /// <inheritdoc />
     public Task<string> GenerateDocument(Type dataType, object documentData)
     {
         try
@@ -46,12 +35,42 @@ public class HandlebarsDocumentGenerator : IDocumentGenerator
         }
     }
 
+    /// <inheritdoc />
+    public async Task<string> GenerateDocument<T>(string templateUrl, T documentData) where T : IDocumentData
+    {
+        try
+        {
+            if (!HandlebarsCompiler.IsInstantiated)
+            {
+                throw new DocumentGenerationException("DocumentGeneration.Handlebars not initialized. Please use services.AddHandlebarsDocumentGeneration() in Program");
+            }
+            
+            var template = await GetTemplateString(templateUrl);
+            var hbsTemplate = HandlebarsCompiler.Instance.GetCompiler(template);
+
+            var output = hbsTemplate(documentData);
+
+            return output;
+        }
+        catch (Exception ex)when (ex is not DocumentGenerationException)
+        {
+            throw new DocumentGenerationException("GenerateDocument Failed", ex);
+        }
+    }
+
     /// <summary>
     /// Prevent construction from outside this library
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
     internal HandlebarsDocumentGenerator()
     {
+    }
+
+    private async Task<string> GetTemplateString(string templatePath)
+    {
+        var client = new HttpClient();
+        var response = await client.GetAsync(templatePath);
+        return await response.Content.ReadAsStringAsync();
     }
 }
 

@@ -21,9 +21,19 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-app.MapGet("/sample", async (IDocumentGenerator documentGenerator) =>
+app.MapGet("/samples/compiled", async (IDocumentGenerator documentGenerator) =>
 {
     var sampleHtml = await documentGenerator.GenerateDocument(new SampleData());
+    return new HtmlResult(sampleHtml);
+});
+
+app.MapGet("/samples/dynamic", async (IDocumentGenerator documentGenerator) =>
+{
+    var data = new SampleData() with
+    {
+        Header = new HeaderData("Dynamic Template Page")
+    };
+    var sampleHtml = await documentGenerator.GenerateDocument("https://raw.githubusercontent.com/adenearnshaw/document-generation-hbs/refs/heads/dynamic-templates/samples/dynamic-templates/dynamic-template.hbs", data);
     return new HtmlResult(sampleHtml);
 });
 
