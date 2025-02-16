@@ -1,3 +1,7 @@
-### GET request to example server
-GET https://localhost:7292/sample
+### GET Sample HTML from Compiled Template
+GET https://localhost:7292/samples/compiled
+Accept: text/html
+
+### GET Sample HTML from Dynamically Provided Template
+GET https://localhost:7292/samples/compiled
 Accept: text/html

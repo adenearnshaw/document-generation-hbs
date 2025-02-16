@@ -33,16 +33,16 @@ internal class HandlebarsCompiler : IDisposable
         return GetCompilerInternal(_paths[typeof(T)]);
     }
 
-    internal HandlebarsTemplate<object, object> GetDynamicCompiler(string path)
+    internal HandlebarsTemplate<object, object> GetCompiler(string template)
     {
-        return GetCompilerInternal(path);
+        return _handlebars.Compile(template);
     }
 
     private HandlebarsTemplate<object, object> GetCompilerInternal(string path)
     {
         if (path == null)
             throw new Exception("Type not registered");
-
+        
         var template = _handlebars.CompileView(path);
         return template;
     }

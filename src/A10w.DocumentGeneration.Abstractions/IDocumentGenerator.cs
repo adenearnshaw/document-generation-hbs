@@ -24,9 +24,9 @@ public interface IDocumentGenerator
     /// <summary>
     /// Generate Document from template at a specified path
     /// </summary>
-    /// <param name="templatePath"></param>
+    /// <param name="templateUrl"></param>
     /// <param name="documentData"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    Task<string> GenerateDocumentFromTemplate<T>(string templatePath, T documentData) where T : IDocumentData;
+    Task<string> GenerateDocument<T>(string templateUrl, T documentData) where T : IDocumentData;
 }

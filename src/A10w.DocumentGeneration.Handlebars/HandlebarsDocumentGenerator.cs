@@ -36,7 +36,7 @@ public class HandlebarsDocumentGenerator : IDocumentGenerator
     }
 
     /// <inheritdoc />
-    public Task<string> GenerateDocumentFromTemplate<T>(string templatePath, T documentData) where T : IDocumentData
+    public async Task<string> GenerateDocument<T>(string templateUrl, T documentData) where T : IDocumentData
     {
         try
         {
@@ -44,12 +44,13 @@ public class HandlebarsDocumentGenerator : IDocumentGenerator
             {
                 throw new DocumentGenerationException("DocumentGeneration.Handlebars not initialized. Please use services.AddHandlebarsDocumentGeneration() in Program");
             }
+            
+            var template = await GetTemplateString(templateUrl);
+            var hbsTemplate = HandlebarsCompiler.Instance.GetCompiler(template);
 
-            var template = HandlebarsCompiler.Instance.GetDynamicCompiler(templatePath);
+            var output = hbsTemplate(documentData);
 
-            var output = template(documentData);
-
-            return Task.FromResult(output);
+            return output;
         }
         catch (Exception ex)when (ex is not DocumentGenerationException)
         {
@@ -63,6 +64,13 @@ public class HandlebarsDocumentGenerator : IDocumentGenerator
     [EditorBrowsable(EditorBrowsableState.Never)]
     internal HandlebarsDocumentGenerator()
     {
+    }
+
+    private async Task<string> GetTemplateString(string templatePath)
+    {
+        var client = new HttpClient();
+        var response = await client.GetAsync(templatePath);
+        return await response.Content.ReadAsStringAsync();
     }
 }
 
