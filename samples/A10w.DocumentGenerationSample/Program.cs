@@ -33,7 +33,7 @@ app.MapGet("/samples/dynamic", async (IDocumentGenerator documentGenerator) =>
     {
         Header = new HeaderData("Dynamic Template Page")
     };
-    var sampleHtml = await documentGenerator.GenerateDocument("https://raw.githubusercontent.com/adenearnshaw/document-generation-hbs/refs/heads/dynamic-templates/samples/dynamic-templates/dynamic-template.hbs", data);
+    var sampleHtml = await documentGenerator.GenerateDocument("https://raw.githubusercontent.com/adenearnshaw/document-generation-hbs/refs/heads/main/samples/dynamic-templates/dynamic-template.hbs", data);
     return new HtmlResult(sampleHtml);
 });
 
