@@ -33,6 +33,11 @@ internal class HandlebarsCompiler : IDisposable
         return GetCompilerInternal(_paths[typeof(T)]);
     }
 
+    internal HandlebarsTemplate<object, object> GetDynamicCompiler(string path)
+    {
+        return GetCompilerInternal(path);
+    }
+
     private HandlebarsTemplate<object, object> GetCompilerInternal(string path)
     {
         if (path == null)

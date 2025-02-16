@@ -20,4 +20,13 @@ public interface IDocumentGenerator
     /// <param name="documentData">Data object associated with document</param>
     /// <returns>Full interpolated string representation of the document</returns>
     Task<string> GenerateDocument(Type dataType, object documentData);
+
+    /// <summary>
+    /// Generate Document from template at a specified path
+    /// </summary>
+    /// <param name="templatePath"></param>
+    /// <param name="documentData"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    Task<string> GenerateDocumentFromTemplate<T>(string templatePath, T documentData) where T : IDocumentData;
 }

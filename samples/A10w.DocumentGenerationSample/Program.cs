@@ -27,6 +27,12 @@ app.MapGet("/sample", async (IDocumentGenerator documentGenerator) =>
     return new HtmlResult(sampleHtml);
 });
 
+app.MapGet("/samples/dynamic", async (IDocumentGenerator documentGenerator) =>
+{
+    var sampleHtml = await documentGenerator.GenerateDocumentFromTemplate("", new SampleData());
+    return new HtmlResult(sampleHtml);
+});
+
 app.Run();
 
 internal record SampleData : IDocumentData

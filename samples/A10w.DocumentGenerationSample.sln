@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{A271
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A10w.DocumentGeneration.Handlebars", "..\src\A10w.DocumentGeneration.Handlebars\A10w.DocumentGeneration.Handlebars.csproj", "{0AEDE7BF-17E3-48C8-B612-859A5DC7006C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A10w.DocumentGeneration.Abstractions", "..\src\A10w.DocumentGeneration.Abstractions\A10w.DocumentGeneration.Abstractions.csproj", "{7C608964-A1FA-4105-B0B5-1ED55E1842A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{0AEDE7BF-17E3-48C8-B612-859A5DC7006C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AEDE7BF-17E3-48C8-B612-859A5DC7006C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AEDE7BF-17E3-48C8-B612-859A5DC7006C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C608964-A1FA-4105-B0B5-1ED55E1842A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C608964-A1FA-4105-B0B5-1ED55E1842A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C608964-A1FA-4105-B0B5-1ED55E1842A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C608964-A1FA-4105-B0B5-1ED55E1842A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +38,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0AEDE7BF-17E3-48C8-B612-859A5DC7006C} = {A271DAAF-D0C3-4C70-9326-98E9B8493A31}
+		{7C608964-A1FA-4105-B0B5-1ED55E1842A8} = {A271DAAF-D0C3-4C70-9326-98E9B8493A31}
 	EndGlobalSection
 EndGlobal
