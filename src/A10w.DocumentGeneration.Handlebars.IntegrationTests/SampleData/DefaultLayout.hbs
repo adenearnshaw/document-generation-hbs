@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <style>
+        .header-bar {
+            width: 100vw;
+            height: 50px;
+            background-color: darkred;
+        }
+        .footer-bar {
+            width: 100vw;
+            height: 50px;
+            background-color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        {{> header }}
+    </header>
+    <main>
+        {{{ body }}}
+    </main>
+    <footer>
+        {{> footer }}
+    </footer>    
+</body>
+
+</html>

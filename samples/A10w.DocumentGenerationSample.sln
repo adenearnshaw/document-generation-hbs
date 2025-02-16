@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A10w.DocumentGenerationSample", "A10w.DocumentGenerationSample\A10w.DocumentGenerationSample.csproj", "{4F5A8CEB-6B95-4A7B-B787-D0E71D0DB43F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{A271DAAF-D0C3-4C70-9326-98E9B8493A31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A10w.DocumentGeneration.Handlebars", "..\src\A10w.DocumentGeneration.Handlebars\A10w.DocumentGeneration.Handlebars.csproj", "{0AEDE7BF-17E3-48C8-B612-859A5DC7006C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F5A8CEB-6B95-4A7B-B787-D0E71D0DB43F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F5A8CEB-6B95-4A7B-B787-D0E71D0DB43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F5A8CEB-6B95-4A7B-B787-D0E71D0DB43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F5A8CEB-6B95-4A7B-B787-D0E71D0DB43F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AEDE7BF-17E3-48C8-B612-859A5DC7006C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AEDE7BF-17E3-48C8-B612-859A5DC7006C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AEDE7BF-17E3-48C8-B612-859A5DC7006C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AEDE7BF-17E3-48C8-B612-859A5DC7006C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3DB506F6-E94D-4033-9EBC-EDD2BEE7B991}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0AEDE7BF-17E3-48C8-B612-859A5DC7006C} = {A271DAAF-D0C3-4C70-9326-98E9B8493A31}
+	EndGlobalSection
+EndGlobal

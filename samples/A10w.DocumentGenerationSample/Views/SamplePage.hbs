@@ -1,0 +1,20 @@
+﻿{{!< DefaultLayout }}
+
+<header>
+{{> header}}
+</header>
+
+<main>
+    <div>
+        <p>{{description}}</p>
+
+        <div>
+            <p>The key benefits are:</p>
+            <ul>
+                {{#each benefits}}
+                <li>{{.}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</main>

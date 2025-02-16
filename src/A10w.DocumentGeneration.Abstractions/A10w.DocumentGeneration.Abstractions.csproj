@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<RootNamespace>A10w.DocumentGeneration</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageId>A10w.DocumentGeneration.Abstractions</PackageId>
+		<Title>A10w.DocumentGeneration.Abstractions</Title>
+		<Summary>Abstractions for Document Generation</Summary>
+		<Description>Provides shared models and interfaces for different DocumentGeneration
+			libraries</Description>
+		<Authors>Aden Earnshaw</Authors>
+		<Company>A10w Software</Company>
+		<NeutralLanguage>en</NeutralLanguage>
+		<IsPackable>true</IsPackable>
+		<PackageType>Dependency</PackageType>
+		<PackageProjectUrl>https://github.com/adenearnshaw/document-generation-hbs</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<IncludeSymbols>false</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
+		<Deterministic>true</Deterministic>
+		<DebugType>embedded</DebugType>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>
+			$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md" PackagePath="README.md" Pack="true" />
+	</ItemGroup>
+</Project>
