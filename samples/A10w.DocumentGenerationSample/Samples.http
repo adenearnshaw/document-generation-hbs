@@ -3,5 +3,5 @@ GET https://localhost:7292/samples/compiled
 Accept: text/html
 
 ### GET Sample HTML from Dynamically Provided Template
-GET https://localhost:7292/samples/compiled
+GET https://localhost:7292/samples/dynamic
 Accept: text/html

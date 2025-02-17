@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace A10w.DocumentGeneration;
+﻿namespace A10w.DocumentGeneration;
 
 /// <summary>
 /// Exception raised by DocumentGeneration Library
@@ -29,15 +27,6 @@ public class DocumentGenerationException : Exception
     /// <param name="message">Exception Message</param>
     /// <param name="innerException">Inner Exception</param>
     public DocumentGenerationException(string message, Exception innerException) : base(message, innerException)
-    {
-    }
-
-    /// <summary>
-    /// Constructor with SerializationInfo
-    /// </summary>
-    /// <param name="info">SerializationInfo</param>
-    /// <param name="context">Streaming Context</param>
-    protected DocumentGenerationException(SerializationInfo info, StreamingContext context) : base(info, context)
     {
     }
 }
