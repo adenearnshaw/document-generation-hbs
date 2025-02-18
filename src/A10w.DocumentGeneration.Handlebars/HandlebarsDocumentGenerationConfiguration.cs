@@ -1,5 +1,6 @@
 ﻿using HandlebarsDotNet;
 using System.Reflection;
+using A10w.DocumentGeneration.Handlebars.Helpers;
 
 namespace A10w.DocumentGeneration.Handlebars;
 
@@ -11,6 +12,8 @@ public class HandlebarsDocumentGenerationConfiguration
     private Dictionary<Type, string> _paths = new();
 
     private Dictionary<string, string> _partials = new();
+    
+    private List<Type> _helpers = new();
 
     /// <summary>
     /// Register the path to a Partial Template
@@ -47,6 +50,17 @@ public class HandlebarsDocumentGenerationConfiguration
         _paths.Add(typeof(T), path);
         return this;
     }
+    
+    /// <summary>
+    /// Registers a Helper with Handlebars
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public HandlebarsDocumentGenerationConfiguration AddHelper<T>() where T : IHelper
+    {
+        _helpers.Add(typeof(T));
+        return this;
+    }
 
     internal (IHandlebars Handlebars, Dictionary<Type, string> Paths) Build()
     {
@@ -58,8 +72,31 @@ public class HandlebarsDocumentGenerationConfiguration
         });
 
         RegisterTemplates(hbs, _partials);
+        
+        RegisterHelpers(hbs, _helpers);
+        
 
         return (hbs, _paths);
+    }
+
+    private IHandlebars RegisterHelpers(IHandlebars hbs, List<Type> helpers)
+    {
+        foreach (var helper in helpers)
+        {
+            var properties = helper.GetProperties(BindingFlags.Static | BindingFlags.NonPublic)?.ToList() ?? new List<PropertyInfo>();
+            
+            var helperName = properties.FirstOrDefault(p => p.Name == "HelperName")?.GetValue(null)?.ToString();
+
+            if (string.IsNullOrEmpty(helperName))
+            {
+                continue;
+            }
+            
+            var helperDelegate = properties.First(p => p.Name == "Delegate").GetValue(null) as HandlebarsHelper;
+            hbs.RegisterHelper(helperName, helperDelegate);
+        }
+
+        return hbs;
     }
 
     private static IHandlebars RegisterTemplates(IHandlebars hbs, Dictionary<string, string> partials)
