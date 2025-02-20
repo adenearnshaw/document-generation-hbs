@@ -17,11 +17,11 @@ jobs:
     - name: Set VERSION variable from tag
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
     - name: Build
-      run: dotnet build --configuration Release /p:Version=${VERSION}
+      run: dotnet build src/A10w.DocumentGeneration.Handlebars/A10w.DocumentGeneration.Handlebars.csproj --configuration Release /p:Version=${VERSION}
     - name: Test
-      run: dotnet test --configuration Release /p:Version=${VERSION} --no-build
+      run: dotnet test src/A10w.DocumentGeneration.Handlebars.IntegrationTests/A10w.DocumentGeneration.Handlebars.IntegrationTests.csproj --configuration Release /p:Version=${VERSION} --no-build
     - name: Pack
-      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
+      run: dotnet pack src/A10w.DocumentGeneration.Handlebars/A10w.DocumentGeneration.Handlebars.csproj --configuration Release /p:Version=${VERSION} --no-build --output .
     # - name: Push
     #   run: dotnet nuget push NuGet.Workflow.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
       # env:
